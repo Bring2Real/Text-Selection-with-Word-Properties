@@ -61,3 +61,5 @@ typings/
 typings
 src/**/*.js
 src/**/*.map
+
+package-lock.json
