@@ -25,10 +25,15 @@ export class WordHighlightComponent implements OnInit {
   }
 
   select(index) {
-    if (this.dataService.words[index].selected == true)
-      return;
+    if (!this.dataService.words[index].selected) {
+      this.dataService.newTag.push(this.dataService.words[index].data);
+    } else {
+      let remove = this.dataService.words[index].data;
+      this.dataService.newTag = this.dataService.newTag.filter(function (a) {
+        return a != remove;
+      });
+    }
     this.dataService.words[index].selected = !this.dataService.words[index].selected;
-    this.dataService.newTag.push(this.dataService.words[index].data);
   }
 
   saveTag() {

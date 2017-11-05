@@ -27,7 +27,7 @@
 	</div>
 	<div class="section tags" *ngIf="dataService.words.length">
 	  Tags : 
-	  <div class="word" *ngFor="let tag of dataService.tags" (click)="selectedTag=tag">
+	  <div class="word {{tag == selectedTag ? 'selected' : ''}}" *ngFor="let tag of dataService.tags" (click)="selectedTag=tag">
 	  	{{tag.tag}}
 	  	<div class="word-cancel" (click)="removeTag(tag.no)">x</div>
 		</div>
