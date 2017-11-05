@@ -1,0 +1,61 @@
+.h1 {
+	text-align: center;
+}
+.sentence {
+	width: 300px;
+}
+.tag-name {
+	width: 200px;
+}
+.section {
+	padding-top: 20px;
+	width: 100%;
+}
+.section button {
+	margin-left: 10px;
+}
+.words {
+	display: inline-block;
+}
+.word {
+	display: inline;
+	padding: 5px 15px 5px 5px;
+	margin-left: 5px;
+	background-color: grey;
+	color: white;
+	position: relative;
+	cursor: pointer;
+}
+.selected.word {
+	background-color: green;
+}
+.tagged.word {
+	background-color: yellow;
+	color: black;	
+}
+.word-tag {
+  position: absolute;
+  left: 0;
+  top: -23px;
+  background: lightskyblue;
+  padding: 3px;
+  opacity: 0;
+  transition: all .5s;
+}
+.word:hover .word-tag {
+	opacity: 1
+}
+.word-cancel {
+	position: absolute;
+	right: 0;
+	top: -5px;
+	color: lightgrey;
+	display: none;
+}
+.selected .word-cancel {
+	display: block;;
+}
+.no-data {
+	background-color: white;
+	color: black;
+}

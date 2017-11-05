@@ -4,7 +4,6 @@ import { WordHighlightComponent } from './wordhighlight/wordhighlight.component'
 @Component({
   selector: 'my-app',
   template: `
-    <h1>Hello {{name}}</h1>
     <cm-wordhighlight
       [data] = "{sentence: 'Mike Kess wants to buy cheese pizza'}"
     ></cm-wordhighlight>
@@ -13,5 +12,5 @@ import { WordHighlightComponent } from './wordhighlight/wordhighlight.component'
 export class AppComponent  {
   @ViewChild(WordHighlightComponent) child: WordHighlightComponent;
   
-  name = 'Angular';
+  name = 'Angular JS - Create simple text selection & word properties';
 }

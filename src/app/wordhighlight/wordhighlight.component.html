@@ -1,3 +1,42 @@
-<div>
-  Sentence : {{dataService.sentence}}
+<div style="margin: 0 auto; width: 700px;">
+	<div class="section">
+	  Sentence : <input class="sentence" [(ngModel)]="dataService.sentence" />
+	  <button (click)="save()">Save</button>
+	</div>
+	<div class="section words" *ngIf="dataService.words.length">
+	  Words : 
+	  <div class="word {{word.selected ? 'selected' : ''}} {{word.tag ? 'tagged' : ''}}" *ngFor="let word of dataService.words; let i = index;" (click)="select(i)">
+	  	{{word.data}}
+	  	<div class="word-cancel">x</div>
+	  	<div class="word-tag" *ngIf="word.tag">{{word.tag}}</div>
+	  </div>
+	  <div class="word no-data" *ngIf="!dataService.words.length">No tags</div>
+	</div>
+	<div class="section" *ngIf="dataService.newTag.length">
+	  Sentence : <input class="tag-name" [(ngModel)]="dataService.tagName" />
+	  <button (click)="saveTag()">Create</button>
+	</div>
+	<div class="section words" *ngIf="dataService.newTag.length">
+	  Selected : 
+	  <div class="word {{word.selected ? 'selected' : ''}}" *ngFor="let word of dataService.newTag; let i = index;" (click)="select(i)">
+	  	{{word}}
+	  	<div class="word-cancel">x</div>
+	  </div>
+	  <div class="word no-data" *ngIf="!dataService.words.length">No tags</div>
+	  <button (click)="clearTag()" *ngIf="dataService.words.length">Clear</button>
+	</div>
+	<div class="section tags" *ngIf="dataService.words.length">
+	  Tags : 
+	  <div class="word" *ngFor="let tag of dataService.tags" (click)="selectedTag=tag">
+	  	{{tag.tag}}
+	  	<div class="word-cancel" (click)="removeTag(tag.no)">x</div>
+		</div>
+	  <div class="word no-data" *ngIf="!dataService.tags.length">No tags</div>
+	  <div class="section" *ngIf="selectedTag">
+	  	Tag Info : {{selectedTag.word}}
+	  </div>
+	</div>
+	<div class="section">
+		{{dataService.saveToJSON()}}
+	</div>
 </div>

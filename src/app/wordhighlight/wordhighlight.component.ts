@@ -19,4 +19,34 @@ export class WordHighlightComponent implements OnInit {
     console.log(this.data);
     this.dataService.setSentence(this.data.sentence);
   }
+
+  save() {
+    this.dataService.save();
+  }
+
+  select(index) {
+    if (this.dataService.words[index].selected == true)
+      return;
+    this.dataService.words[index].selected = !this.dataService.words[index].selected;
+    this.dataService.newTag.push(this.dataService.words[index].data);
+  }
+
+  saveTag() {
+    if (this.dataService.tagName == '') {
+      alert('Insert Tag Name');
+    } else {
+      this.dataService.saveTag();
+    }
+  }
+
+  clearTag () {
+    this.dataService.tagName = '';
+    this.dataService.clearTag ();
+  }
+
+  removeTag (no: any) {
+    if (confirm('Are you sure to delete this tag ?')) {
+      this.dataService.removeTag(no);
+    }
+  }
 }
